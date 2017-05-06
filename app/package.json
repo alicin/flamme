@@ -1,0 +1,24 @@
+{
+  "name": "flamme",
+  "version": "0.0.0",
+  "description": "tinder analytics",
+  "main": "./dist/main.js",
+  "dependencies": {
+    "babel-runtime": "^6.23.0",
+    "debug": "^2.6.6",
+    "dexie": "^1.5.1",
+    "electron-debug": "^1.1.0",
+    "moment": "^2.18.1",
+    "request": "^2.81.0",
+    "swing": "^4.3.0",
+    "tinder": "^1.19.0",
+    "underscore": "^1.8.3",
+    "vue": "^2.1.10",
+    "vue-electron": "^1.0.6",
+    "vue-resource": "^1.0.3",
+    "vue-router": "^2.1.2",
+    "vuetify": "^0.10.4",
+    "vuex": "^2.1.1"
+  },
+  "author": "Ali Can Bardakci <alicanbardakci@gmail.com>"
+}
