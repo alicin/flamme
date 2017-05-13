@@ -3,7 +3,7 @@
   <div :class="{wrapper: true, open: visible}">
   <transition-group name="popin" tag="p">
       <div class="modal" :key="index" v-for="(modal, index) in modals">
-        <chat :index="index" :match="modal.match" v-if="modal.match"></chat>
+        <chat :index="index" :matched="modal.match" v-if="modal.match"></chat>
         <profile :index="index" :id="modal.userId" :match-id="modal.matchId" v-if="modal.userId"></profile>
       </div>
     </transition-group>

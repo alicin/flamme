@@ -13,6 +13,12 @@ Vue.use(Router)
 Vue.use(Vuetify)
 Vue.config.debug = true
 
+Vue.http.interceptors.push(function (request, next) {
+  next(function (response) {
+    console.log('response')
+  })
+})
+
 const router = new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes

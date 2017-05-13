@@ -16,7 +16,7 @@
 
   <h6 class="pink--text">Chats</h6>
   <ul class="chats">
-    <chat v-for="(chat, index) in chats" :index="index" :match="chat"></chat>
+    <chat v-for="(chat, index) in chats" :index="index" :matched="chat"></chat>
   </ul>
 </div>
   
@@ -117,7 +117,7 @@
   }
   .matches-container {
     overflow: scroll;
-    height: 230px;
+    
   }
   .matches, .outs {
     list-style-type: none;

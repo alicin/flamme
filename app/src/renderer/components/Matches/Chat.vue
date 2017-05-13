@@ -2,9 +2,10 @@
   <li class="clickable cf" @click="showMessages">
     <div class="img-wrapper">
       <img :src="match.person.photos[0].processedFiles[2].url" :alt="match.person.name">
+      <span class="update pink accent-2" v-if="match.newMessage && !isReply(match.messages[match.messages.length - 1])"></span>
     </div>
     <div class="details">
-      <p class="name"><span v-if="match.newMessage && !isReply(match.messages[match.messages.length - 1])">N</span> {{ match.person.name }} <span class="last_seen">- {{ last_seen() }}</span> <div v-if="$parent.unmatchMode" @click.stop="unmatch()" light flat class=" lighten-1 red--text">Unmatch</div></p>
+      <p class="name">{{ match.person.name }} <span class="last_seen">- {{ last_seen() }}</span> <div v-if="$parent.unmatchMode" @click.stop="unmatch()" light flat class=" lighten-1 red--text">Unmatch</div></p>
       <p class="message"><v-icon v-if="isReply(match.messages[match.messages.length - 1])" class="grey--text lighten-1 icon-reply"></v-icon>{{ match.messages[match.messages.length - 1].message }}</p>
     </div>
     <div class="seperator"></div>
@@ -17,12 +18,13 @@
   import Sync from '../../services/Sync'
   export default {
     name: 'chat',
-    props: ['match', 'index'],
+    props: ['matched', 'index'],
     components: {
       Messages
     },
     data () {
       return {
+        match: this.matched,
         messages: false
       }
     },
@@ -70,6 +72,7 @@
     margin-right: 30px;
     height: 115px;
     float: left;
+    position: relative;
   }
   img {
     width: 115px;
@@ -122,5 +125,16 @@
     font-size: 14px;
     font-weight: normal;
     color: #999;
+  }
+  .update {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: -17px;
+    margin-top: -17px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 4px solid #fff !important;
   }
 </style>

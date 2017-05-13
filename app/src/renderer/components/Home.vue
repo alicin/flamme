@@ -8,6 +8,7 @@
         {{ travel.travel_location_info[0].administrative_area_level_1.long_name }},
         {{ travel.travel_location_info[0].country.long_name }}
       </p>
+      <p><v-btn small error dark @click.native="logout">Logout</v-btn></p>
     </div>
     <div class="right settings-wrapper">
       <photos :photos="photos"></photos>
@@ -40,7 +41,6 @@
         Api.profile((error, profile) => {
           if (error) {
             console.log(error)
-            localStorage.clear()
             this.$router.push('/')
             this.$parent.e1 = 1
             return
@@ -51,10 +51,16 @@
           this.name = profile.user.name
           this.travel = profile.travel
           this.photos = profile.user.photos
-
+          this.$root.profile = profile
           this.$root.likes_remaining = profile.rating.likes_remaining
           this.$root.super_likes_remaining = profile.rating.super_likes.remaining
+          this.$root.rate_limited_until = profile.rating.rate_limited_until / 1000
+          this.$root.super_likes_resets_at = Math.round(new Date(profile.rating.super_likes.resets_at).getTime() / 1000)
         })
+      },
+      logout () {
+        localStorage.clear()
+        location.reload()
       }
     },
     created () {

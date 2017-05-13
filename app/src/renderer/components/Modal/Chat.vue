@@ -11,8 +11,11 @@
 
     <div class="content">
       <div v-for="message in match.messages" :class="{ message: true, sent: message.from == userId, received: message.from != userId }">
-        <div class="message-inner">
+        <div class="message-inner" v-if="message.message.indexOf('.giphy.com/media/') === -1">
           {{ message.message }}
+        </div>
+        <div class="message-inner gif" v-if="message.message.indexOf('.giphy.com/media/') > -1">
+          <img :src="message.message">
         </div>
       </div>
     </div>
@@ -28,9 +31,10 @@
   // import Moment from 'moment'
   import Api from '../../services/Api'
   export default {
-    props: ['match', 'index'],
+    props: ['matched', 'index'],
     data () {
       return {
+        match: this.matched,
         draft: ''
       }
     },
@@ -60,7 +64,10 @@
       },
       onNewMessage (event) {
         if (event.detail && this.match._id === event.detail._id) {
-          this.$parent.matches[this.index] = event.detail
+          this.match = event.detail
+          setTimeout(() => {
+            this.scrollBottom()
+          }, 200)
         }
       },
       scrollBottom () {
@@ -74,6 +81,7 @@
       }
     },
     mounted () {
+      this.match = this.matched
       this.scrollBottom()
       this.$el.querySelector('#text-box').focus()
       window.addEventListener('message', this.onNewMessage, false)
@@ -180,5 +188,13 @@
     position: relative;
     top: -4px;
     color: #2bb2c8;
+  }
+  .gif {
+    padding: 0;
+  }
+  .gif img {
+    display: block;
+    border-radius: 4px;
+    width: 100%;
   }
 </style>

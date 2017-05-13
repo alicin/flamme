@@ -1,7 +1,8 @@
 <template>
   <li class="clickable" @click="showMessages">
     <img :src="match.person.photos[0].processedFiles[2].url" :alt="match.person.name">
-    <p>{{ match.person.name }} <span v-if="match.new">N</span></p>
+    <span class="update pink accent-2" v-if="match.new"></span>
+    <p>{{ match.person.name }}</p>
     <div v-if="$parent.unmatchMode" @click.stop="unmatch()" light flat class=" lighten-1 red--text">Unmatch</div>
   </li>
 </template>
@@ -39,12 +40,10 @@
 <style scoped>
   li {
     width: 115px;
-    height: 230px;
     margin-left: 30px;
     float: left;
     text-align: center;
     position: relative;
-    overflow: hidden;
   }
   img {
     width: 100%;
@@ -67,5 +66,16 @@
     padding: 0;
     margin: 0;
     opacity: 0;
+  }
+  .update {
+    display: block;
+    position: absolute;
+    top: 57px;
+    right: -10px;
+    margin-top: -10px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 4px solid #fff !important;
   }
 </style>

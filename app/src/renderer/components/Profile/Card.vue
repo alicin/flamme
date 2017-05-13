@@ -6,7 +6,7 @@
     v-bind:width="4" 
     class="pink--text progress"
     />
-    <img class="main-photo" draggable="false" :src="main" alt="">
+    <img v-if="imageUrl" class="main-photo" draggable="false" :src="imageUrl" alt="">
     <h6>{{ match.name }}, {{ age }}<br>
     <span class="subtitle">{{ match.teaser.string }}</span></h6>
   </li>
@@ -18,7 +18,8 @@
     props: ['match', 'index', 'main'],
     data () {
       return {
-        imageIndex: 0
+        imageIndex: 0,
+        imageUrl: false
       }
     },
     components: {
@@ -41,6 +42,9 @@
         return new Date().getFullYear() - this.match.birth_date.split('-')[0]
       }
     },
+    mounted () {
+      this.imageUrl = this.match.photos[this.imageIndex].url
+    },
     name: 'card'
   }
 </script>
@@ -51,7 +55,7 @@ li {
   right: 70px;
   background: #fff;
   position: absolute;
-  top: 100px;
+  top: 80px;
   border-radius: 5px;
   overflow: hidden;
   transform: scale(0.9);

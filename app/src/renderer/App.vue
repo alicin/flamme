@@ -3,11 +3,14 @@
     <v-toolbar fixed class="pink accent-2 elevation-0">
       <v-icon class="white--text">show_chart</v-icon> 
       <v-toolbar-title>Flamme</v-toolbar-title>
-      <v-toolbar-item class="toolbar-item" v-if="likes_remaining > -1 && likes_remaining < 100">
-        <v-icon class="icon">favorite</v-icon> {{ likes_remaining }}
+      <v-toolbar-item class="toolbar-item" v-if="rate_limited_until">
+        <v-icon class="icon">favorite</v-icon> 
+        <countdown :date="rate_limited_until"></countdown>
       </v-toolbar-item>
       <v-toolbar-item class="toolbar-item" v-if="super_likes_remaining > -1">
-        <v-icon class="icon">star</v-icon> {{ super_likes_remaining }}
+        <v-icon class="icon">star</v-icon> 
+        <span v-if="super_likes_remaining">{{ super_likes_remaining }}</span>
+        <countdown v-if="!super_likes_remaining" :date="super_likes_resets_at"></countdown>
       </v-toolbar-item>
     </v-toolbar>
     <main>
@@ -40,18 +43,22 @@
   import Sync from './services/Sync'
   import Api from './services/Api'
   import Modals from './components/Modal/Modals'
+  import Countdown from './components/Helpers/Countdown'
   export default {
     store,
     components: {
-      Modals
+      Modals,
+      Countdown
     },
     data () {
       return {
+        profile: false,
         historyInterval: false,
         notification: false,
         e1: 1,
-        likes_remaining: -1,
-        super_likes_remaining: -1
+        super_likes_remaining: -1,
+        rate_limited_until: false,
+        super_likes_resets_at: false
       }
     },
     methods: {
@@ -59,7 +66,6 @@
         Api.history((error, history) => {
           if (error) {
             clearInterval(this.historyInterval)
-            localStorage.clear()
             this.$router.push('/')
             this.e1 = 1
             return
