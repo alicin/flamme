@@ -26,6 +26,11 @@ export default [
     component: require('components/Swipe')
   },
   {
+    path: '/analyze',
+    name: 'analyze',
+    component: require('components/Analyze')
+  },
+  {
     path: '*',
     redirect: '/'
   }

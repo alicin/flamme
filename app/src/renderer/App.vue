@@ -33,6 +33,10 @@
         <span>Swipe</span>
         <v-icon>account_box</v-icon>
       </v-btn>
+      <v-btn router href="/analyze" flat class="pink--text accent-3" @click.native="e1 = 4" :value="e1 === 4">
+        <span>Analyze</span>
+        <v-icon>show_chart</v-icon> 
+      </v-btn>
     </v-bottom-nav>
     <modals></modals>
   </v-app>
@@ -81,7 +85,7 @@
     },
     mounted () {
       this.historyCheck()
-      this.historyInterval = setInterval(this.historyCheck, 20000)
+      this.historyInterval = setInterval(this.historyCheck, 10000)
     }
   }
 </script>

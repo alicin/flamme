@@ -4,8 +4,10 @@
       <v-icon>close</v-icon>
     </v-btn>
 
-    <div class="profile">
-      <img :src="match.person.photos[0].processedFiles[3].url" :alt="match.person.name"> {{ match.person.name }}
+    <div class="profile cf">
+      <img class="block left avatar" :src="match.person.photos[0].processedFiles[3].url" :alt="match.person.name"> 
+      <img class="block left super-like" v-if="match.super_liker" src="../../images/star2.png" alt="">
+      <div class="name left">{{ match.person.name }}</div>
       <v-btn @click.native="showProfile" light flat class="light-blue accent-3 white--text btn-profile"></v-btn>
     </div>
 
@@ -114,12 +116,21 @@
     height: 100%;
     opacity: 0;
   }
-  .profile img {
+  .avatar {
     vertical-align: middle;
     width: 45px;
     height: 45px;
     border-radius: 50%;
     margin-right: 20px;
+  }
+  .super-like{
+    height: 20px;
+    width: auto;
+    margin-right: 7px;
+    margin-top: 13px;
+  }
+  .name {
+    margin-top: 10px;
   }
   .content {
     position: fixed;

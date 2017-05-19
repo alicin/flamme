@@ -1,8 +1,11 @@
 <template>
   <li class="clickable" @click="showMessages">
-    <img :src="match.person.photos[0].processedFiles[2].url" :alt="match.person.name">
+    <img :src="match.person.photos[0].processedFiles[2].url" :alt="match.person.name" class="profile-pic">
     <span class="update pink accent-2" v-if="match.new"></span>
-    <p>{{ match.person.name }}</p>
+    <p>
+      <img v-if="match.super_liker" src="../../images/star2.png" class="super-like" alt="">
+      {{ match.person.name }}
+    </p>
     <div v-if="$parent.unmatchMode" @click.stop="unmatch()" light flat class=" lighten-1 red--text">Unmatch</div>
   </li>
 </template>
@@ -45,7 +48,7 @@
     text-align: center;
     position: relative;
   }
-  img {
+  .profile-pic {
     width: 100%;
     height: auto;
     border-radius: 50%;
@@ -54,7 +57,7 @@
   p {
     font-size: 18px;
     font-weight: bold;
-    
+    margin-bottom: 0;
   }
   .chat-button {
     position: absolute;
@@ -77,5 +80,10 @@
     height: 25px;
     border-radius: 50%;
     border: 4px solid #fff !important;
+  }
+  .super-like {
+    height: 20px;
+    width: auto;
+    margin-right: 5px;
   }
 </style>

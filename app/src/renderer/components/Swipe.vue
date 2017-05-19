@@ -18,6 +18,7 @@
   let swipeInProgress = false
   let cardsInProgress = false
   let focusInterval
+  let getCardsInterval
   export default {
     data () {
       return {
@@ -95,9 +96,9 @@
         this.$root.modalController.modals = []
         swipeInProgress = true
         const child = this.$children[this.cards.length - 1]
-        child.$el.style.transform = 'translateY(470px)'
+        child.$el.style.transform = 'translateY(-470px)'
         child.$el.style.opacity = 0
-        Api.like(child.match._id, (error, message) => {
+        Api.superLike(child.match._id, (error, message) => {
           if (error) console.log(error)
           console.log(message)
           if (message.likes_remaining === 0) {
@@ -137,6 +138,7 @@
         // TODO: no recs check
         if (cardsInProgress) { return }
         cardsInProgress = true
+        this.recs = false
         console.log('fetching cards..')
         Api.getCards((error, response) => {
           cardsInProgress = false
@@ -166,10 +168,14 @@
       this.profilepic = this.$root.$data.profile.user.photos[0].url
       focusInterval = setInterval(() => {
         document.getElementById('swiper').focus()
-      }, 500)
+      }, 1000)
+      getCardsInterval = setInterval(() => {
+        this.getCards()
+      }, 15000)
     },
     beforeDestroy () {
       clearInterval(focusInterval)
+      clearInterval(getCardsInterval)
     },
     name: 'swipe'
   }

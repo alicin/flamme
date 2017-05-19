@@ -1,11 +1,16 @@
 <template>
   <li class="clickable cf" @click="showMessages">
     <div class="img-wrapper">
-      <img :src="match.person.photos[0].processedFiles[2].url" :alt="match.person.name">
+      <img :src="match.person.photos[0].processedFiles[2].url" :alt="match.person.name" class="avatar">
       <span class="update pink accent-2" v-if="match.newMessage && !isReply(match.messages[match.messages.length - 1])"></span>
     </div>
     <div class="details">
-      <p class="name">{{ match.person.name }} <span class="last_seen">- {{ last_seen() }}</span> <div v-if="$parent.unmatchMode" @click.stop="unmatch()" light flat class=" lighten-1 red--text">Unmatch</div></p>
+      <p class="name">
+        <img v-if="match.super_liker" class="super-like" src="../../images/star2.png" alt="">
+        {{ match.person.name }} 
+        <span class="last_seen">- {{ last_seen() }}</span> 
+        <div v-if="$parent.unmatchMode" @click.stop="unmatch()" light flat class=" lighten-1 red--text">Unmatch</div>
+      </p>
       <p class="message"><v-icon v-if="isReply(match.messages[match.messages.length - 1])" class="grey--text lighten-1 icon-reply"></v-icon>{{ match.messages[match.messages.length - 1].message }}</p>
     </div>
     <div class="seperator"></div>
@@ -25,7 +30,8 @@
     data () {
       return {
         match: this.matched,
-        messages: false
+        messages: false,
+        id: localStorage.userId
       }
     },
     methods: {
@@ -74,7 +80,7 @@
     float: left;
     position: relative;
   }
-  img {
+  .avatar {
     width: 115px;
     height: auto;
     border-radius: 50%;
@@ -96,7 +102,7 @@
     font-size: 18px;
     font-weight: bold;
     margin-top: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 5px !important;
   }
   .seperator {
     position: absolute;
@@ -136,5 +142,13 @@
     height: 30px;
     border-radius: 50%;
     border: 4px solid #fff !important;
+  }
+  .super-like {
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    height: 20px;
+    width: auto;
+    margin-right: 5px;
   }
 </style>
