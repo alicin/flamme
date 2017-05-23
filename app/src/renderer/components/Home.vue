@@ -8,7 +8,7 @@
         {{ travel.travel_location_info[0].administrative_area_level_1.long_name }},
         {{ travel.travel_location_info[0].country.long_name }}
       </p>
-      <p><v-btn small error dark @click.native="logout">Logout</v-btn></p>
+      <p><v-btn small error light @click.native="logout">Logout</v-btn></p>
     </div>
     <div class="right settings-wrapper">
       <photos :photos="photos"></photos>

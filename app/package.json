@@ -21,7 +21,7 @@
     "vue-electron": "^1.0.6",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.1.2",
-    "vuetify": "^0.10.4",
+    "vuetify": "0.10.4",
     "vuex": "^2.1.1"
   },
   "author": "Ali Can Bardakci <alicanbardakci@gmail.com>"

@@ -7,7 +7,7 @@
     </ul>
   </div>
 
-  <h6 class="pink--text">Matches <v-switch label="Unmatch Mode" v-model="unmatchMode" error light hide-details /></h6>
+  <h6 class="pink--text">Matches <v-switch label="Unmatch Mode" v-model="unmatchMode" error dark hide-details /></h6>
   <div class="matches-container">
     <ul class="matches cf" :style="{ width: width + 'px' }">
       <match v-for="(match, index) in matches" :index="index" :match="match"></match>
@@ -117,9 +117,10 @@
   }
   .matches-container {
     overflow: scroll;
-    
   }
-  .matches, .outs {
+
+  .chats, .matches, .outs {
+    padding-left: 0;
     list-style-type: none;
   }
   .go-container {

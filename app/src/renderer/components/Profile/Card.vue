@@ -51,8 +51,8 @@
 
 <style scoped>
 li {
-  left: 70px;
-  right: 70px;
+  left: 90px;
+  right: 90px;
   background: #fff;
   position: absolute;
   top: 80px;

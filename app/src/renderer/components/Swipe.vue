@@ -184,7 +184,7 @@
 <style scoped>
 .keyboard {
   position: absolute;
-  bottom: 70px;
+  bottom: 15px;
   width: 130px;
   height: auto;
   left: 50%;

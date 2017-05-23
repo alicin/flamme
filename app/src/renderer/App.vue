@@ -14,11 +14,7 @@
       </v-toolbar-item>
     </v-toolbar>
     <main>
-      <v-content>
-        <v-container fluid>
-          <router-view></router-view>
-        </v-container>
-      </v-content>
+      <router-view></router-view>
     </main>
     <v-bottom-nav absolute value="true" class="white">
       <v-btn router href="/" flat class="pink--text accent-3" @click.native="e1 = 1" :value="e1 === 1">
@@ -105,11 +101,21 @@
   body { height: 100%; color: #555;}
 
   main {
-    margin-top: 64px;
-    margin-bottom: 56px;
+    position: fixed;
+    top: 56px;
+    bottom: 56px;
+    left: 0;
+    right: 0;
+    padding-top: 0 !important;
+    overflow: auto;
   }
   ul, nav {
+    padding-left: 0;
     list-style-type: none;
+  }
+
+  h6 {
+    font-size: 18px;
   }
   
   .left {
