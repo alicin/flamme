@@ -136,7 +136,7 @@
     },
     computed: {
       age: function () {
-        return new Date().getFullYear() - this.profile.birth_date.split('-')[0]
+        return new Date().getFullYear() - this.profile.birth_date.split('-')[0] - 1
       },
       distance: function () {
         return Math.round(this.profile.distance_mi * 1.61)

@@ -1,7 +1,7 @@
 <template>
   <li class="clickable cf" @click="showMessages">
     <div class="img-wrapper">
-      <img :src="match.person.photos[0].processedFiles[2].url" :alt="match.person.name" class="avatar">
+      <img :src="match.person.photos[0] ? match.person.photos[0].processedFiles[2].url : ''" :alt="match.person.name" class="avatar">
       <span class="update pink accent-2" v-if="match.newMessage && !isReply(match.messages[match.messages.length - 1])"></span>
     </div>
     <div class="details">
