@@ -57,6 +57,10 @@ export default class Api {
   static getCards (callback) {
     client.getRecommendations(20, apiCallback(callback))
   }
+
+  static updatePosition (lon, lat, callback) {
+    client.updatePosition(lon, lat, apiCallback(callback))
+  }
 }
 
 function apiCallback (callback) {
