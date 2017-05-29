@@ -55,7 +55,7 @@ li {
   right: 90px;
   background: #fff;
   position: absolute;
-  top: 80px;
+  top: 30px;
   border-radius: 5px;
   overflow: hidden;
   transform: scale(0.9);
