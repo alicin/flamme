@@ -1,7 +1,6 @@
 <template>
   <div>
     <line-chart :labels="dailyW.labels" :data="dailyW.data" label="matches per day" did="ch-dw"></line-chart>
-    <line-chart :labels="dailyM.labels" :data="dailyM.data" label="matches per day" did="ch-dm"></line-chart>
     <line-chart :labels="hourly.labels" :data="hourly.data" label="matches per hour" did="ch-h"></line-chart>
   </div>
 </template>
