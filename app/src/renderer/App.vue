@@ -2,15 +2,15 @@
   <v-app id="example-1">
     <v-toolbar fixed class="pink accent-2 elevation-0">
       <v-icon class="white--text">show_chart</v-icon> 
-      <v-toolbar-title>Flamme</v-toolbar-title>
+      <v-toolbar-title class="white--text">Flamme</v-toolbar-title>
       <v-toolbar-item class="toolbar-item" v-if="rate_limited_until">
         <v-icon class="icon">favorite</v-icon> 
         <countdown :date="rate_limited_until"></countdown>
       </v-toolbar-item>
       <v-toolbar-item class="toolbar-item" v-if="super_likes_remaining > -1">
-        <v-icon class="icon">star</v-icon> 
-        <span v-if="super_likes_remaining">{{ super_likes_remaining }}</span>
-        <countdown v-if="!super_likes_remaining" :date="super_likes_resets_at"></countdown>
+        <v-icon class="icon white--text">star</v-icon> 
+        <span v-if="super_likes_remaining" class="white--text">{{ super_likes_remaining }}</span>
+        <countdown class="white--text" v-if="!super_likes_remaining" :date="super_likes_resets_at"></countdown>
       </v-toolbar-item>
     </v-toolbar>
     <main>
