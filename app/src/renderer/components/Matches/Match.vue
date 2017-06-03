@@ -1,6 +1,6 @@
 <template>
   <li class="clickable" @click="showMessages">
-    <img :src="match.person.photos[0].processedFiles[2].url" :alt="match.person.name" class="profile-pic">
+    <img :src="match.person.photos[0] ? match.person.photos[0].processedFiles[2].url : ''" :alt="match.person.name" class="profile-pic">
     <span class="update pink accent-2" v-if="match.new"></span>
     <p>
       <img v-if="match.super_liker" src="../../images/star2.png" class="super-like" alt="">

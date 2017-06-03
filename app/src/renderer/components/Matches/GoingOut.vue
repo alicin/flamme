@@ -1,6 +1,6 @@
 <template>
   <li class="clickable" @click="showMessages">
-    <img :src="out.match.person.photos[0].processedFiles[1].url" alt="">
+    <img :src="out.match.person.photos[0] ? out.match.person.photos[0].processedFiles[2].url : ''" alt="">
     <p class="name">{{ out.match.person.name }}</p>
     <p class="act"><span>{{ out.status.emoji }}</span> {{ out.status.tag }}</p>
   </li>
