@@ -3,22 +3,44 @@
 process.env.BABEL_ENV = 'renderer'
 
 const path = require('path')
-const pkg = require('./app/package.json')
-const settings = require('./config.js')
+const { dependencies } = require('../package.json')
 const webpack = require('webpack')
 
+const BabiliWebpackPlugin = require('babili-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+/**
+ * List of node_modules to include in webpack bundle
+ *
+ * Required for specific packages like Vue UI libraries
+ * that provide pure *.vue files that need compiling
+ * https://simulatedgreg.gitbooks.io/electron-vue/content/en/webpack-configurations.html#white-listing-externals
+ */
+let whiteListedModules = ['vue']
+
 let rendererConfig = {
-  devtool: '#eval-source-map',
-  devServer: { overlay: true },
+  devtool: '#cheap-module-eval-source-map',
   entry: {
-    renderer: path.join(__dirname, 'app/src/renderer/main.js')
+    renderer: path.join(__dirname, '../src/renderer/main.js')
   },
-  externals: Object.keys(pkg.dependencies || {}),
+  externals: [
+    ...Object.keys(dependencies || {}).filter(d => !whiteListedModules.includes(d))
+  ],
   module: {
     rules: [
+      {
+        test: /\.(js|vue)$/,
+        enforce: 'pre',
+        exclude: /node_modules/,
+        use: {
+          loader: 'eslint-loader',
+          options: {
+            formatter: require('eslint-friendly-formatter')
+          }
+        }
+      },
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
@@ -33,12 +55,7 @@ let rendererConfig = {
       {
         test: /\.js$/,
         use: 'babel-loader',
-        include: [ path.resolve(__dirname, 'app/src/renderer') ],
         exclude: /node_modules/
-      },
-      {
-        test: /\.json$/,
-        use: 'json-loader'
       },
       {
         test: /\.node$/,
@@ -49,6 +66,7 @@ let rendererConfig = {
         use: {
           loader: 'vue-loader',
           options: {
+            extractCSS: process.env.NODE_ENV === 'production',
             loaders: {
               sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax=1',
               scss: 'vue-style-loader!css-loader!sass-loader'
@@ -82,51 +100,43 @@ let rendererConfig = {
     new ExtractTextPlugin('styles.css'),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: './app/index.ejs',
-      appModules: process.env.NODE_ENV !== 'production'
-        ? path.resolve(__dirname, 'app/node_modules')
-        : false,
+      template: path.resolve(__dirname, '../src/index.ejs'),
+      minify: {
+        collapseWhitespace: true,
+        removeAttributeQuotes: true,
+        removeComments: true
+      },
+      nodeModules: process.env.NODE_ENV !== 'production'
+        ? path.resolve(__dirname, '../node_modules')
+        : false
     }),
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
   ],
   output: {
     filename: '[name].js',
     libraryTarget: 'commonjs2',
-    path: path.join(__dirname, 'app/dist')
+    path: path.join(__dirname, '../dist/electron')
   },
   resolve: {
     alias: {
-      'components': path.join(__dirname, 'app/src/renderer/components'),
-      'renderer': path.join(__dirname, 'app/src/renderer')
+      '@': path.join(__dirname, '../src/renderer'),
+      'vue$': 'vue/dist/vue.esm.js'
     },
-    extensions: ['.js', '.vue', '.json', '.css', '.node'],
-    modules: [
-      path.join(__dirname, 'app/node_modules'),
-      path.join(__dirname, 'node_modules')
-    ]
+    extensions: ['.js', '.vue', '.json', '.css', '.node']
   },
   target: 'electron-renderer'
 }
 
+/**
+ * Adjust rendererConfig for development settings
+ */
 if (process.env.NODE_ENV !== 'production') {
-  /**
-   * Apply ESLint
-   */
-  if (settings.eslint) {
-    rendererConfig.module.rules.push(
-      {
-        test: /\.(js|vue)$/,
-        enforce: 'pre',
-        exclude: /node_modules/,
-        use: {
-          loader: 'eslint-loader',
-          options: {
-            formatter: require('eslint-friendly-formatter')
-          }
-        }
-      }
-    )
-  }
+  rendererConfig.plugins.push(
+    new webpack.DefinePlugin({
+      '__static': `"${path.join(__dirname, '../static')}"`
+    })
+  )
 }
 
 /**
@@ -136,16 +146,22 @@ if (process.env.NODE_ENV === 'production') {
   rendererConfig.devtool = ''
 
   rendererConfig.plugins.push(
+    new BabiliWebpackPlugin({
+      removeConsole: true,
+      removeDebugger: true
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: path.join(__dirname, '../static'),
+        to: path.join(__dirname, '../dist/electron/static'),
+        ignore: ['.*']
+      }
+    ]),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
     })
   )
 }
