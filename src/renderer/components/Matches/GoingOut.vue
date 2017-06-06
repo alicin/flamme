@@ -24,7 +24,7 @@
         const modal = {
           match: this.out.match
         }
-        this.$root.modalController.push(modal)
+        App.modalController.push(modal)
       },
       unmatch () {
         this.$parent.unmatch(this.index)

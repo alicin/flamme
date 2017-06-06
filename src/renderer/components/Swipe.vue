@@ -1,7 +1,7 @@
 <template>
   <div tabindex="-1" id="swiper" @keyup.left="pass" @keyup.right="like" @keyup.up="superLike" @keyup.down="nextImage">
     <ul class="card-stack">
-      <card v-for="(card, index) in cards" :match="card" :index="index" :main="card.photos[0].url"></card>
+      <card v-for="(card, index) in cards" :key="index" :match="card" :index="index" :main="card.photos[0].url"></card>
     </ul>
     <div class="head" @click="getCards" v-if="!cards.length">
       <img :src="profilepic">
@@ -18,7 +18,6 @@
   let swipeInProgress = false
   let cardsInProgress = false
   let focusInterval
-  let getCardsInterval
   export default {
     data () {
       return {
@@ -37,7 +36,7 @@
         if (this.cards.length === 2 || this.cards.length === 1) {
           this.getCards()
         }
-        this.$root.modalController.modals = []
+        App.modalController.modals = []
         swipeInProgress = true
         const child = this.$children[this.cards.length - 1]
         child.$el.style.transform = 'translateX(-470px)'
@@ -56,7 +55,7 @@
         if (this.cards.length === 2 || this.cards.length === 1) {
           this.getCards()
         }
-        this.$root.modalController.modals = []
+        App.modalController.modals = []
         swipeInProgress = true
         const child = this.$children[this.cards.length - 1]
         child.$el.style.transform = 'translateX(470px)'
@@ -76,7 +75,7 @@
             window.dispatchEvent(event)
           }
           if (message.likes_remaining) {
-            this.$root.likes_remaining = message.likes_remaining
+            App.likes_remaining = message.likes_remaining
           }
         })
         setTimeout(() => {
@@ -85,7 +84,7 @@
         }, 200)
       },
       superLike () {
-        if (this.$root.super_likes_remaining < 1) {
+        if (App.super_likes_remaining < 1) {
           alert('You are out of superlikes.')
           return
         }
@@ -93,7 +92,7 @@
         if (this.cards.length === 2 || this.cards.length === 1) {
           this.getCards()
         }
-        this.$root.modalController.modals = []
+        App.modalController.modals = []
         swipeInProgress = true
         const child = this.$children[this.cards.length - 1]
         child.$el.style.transform = 'translateY(-470px)'
@@ -113,7 +112,7 @@
             window.dispatchEvent(event)
           }
           if (message.likes_remaining) {
-            this.$root.likes_remaining = message.likes_remaining
+            App.likes_remaining = message.likes_remaining
           }
         })
         setTimeout(() => {
@@ -162,26 +161,24 @@
       }
     },
     mounted () {
-      window.element = this
       this.getCards()
       document.getElementById('swiper').focus()
-      this.profilepic = this.$root.$data.profile.user.photos[0].url
+      this.profilepic = App.profile.user.photos[0].url
       focusInterval = setInterval(() => {
         document.getElementById('swiper').focus()
       }, 1000)
-      getCardsInterval = setInterval(() => {
-        this.getCards()
-      }, 15000)
     },
     beforeDestroy () {
       clearInterval(focusInterval)
-      clearInterval(getCardsInterval)
     },
     name: 'swipe'
   }
 </script>
 
 <style scoped>
+.swiper {
+  overflow: hidden;
+}
 .keyboard {
   position: absolute;
   bottom: 15px;

@@ -51,11 +51,11 @@
           this.name = profile.user.name
           this.travel = profile.travel
           this.photos = profile.user.photos
-          this.$root.profile = profile
-          this.$root.likes_remaining = profile.rating.likes_remaining
-          this.$root.super_likes_remaining = profile.rating.super_likes.remaining
-          this.$root.rate_limited_until = profile.rating.rate_limited_until / 1000
-          this.$root.super_likes_resets_at = Math.round(new Date(profile.rating.super_likes.resets_at).getTime() / 1000)
+          App.profile = profile
+          App.likes_remaining = profile.rating.likes_remaining
+          App.super_likes_remaining = profile.rating.super_likes.remaining
+          App.rate_limited_until = profile.rating.rate_limited_until / 1000
+          App.super_likes_resets_at = Math.round(new Date(profile.rating.super_likes.resets_at).getTime() / 1000)
         })
       },
       logout () {

@@ -42,14 +42,14 @@
     },
     methods: {
       closeModal () {
-        this.$root.modalController.splice(this.index)
+        App.modalController.splice(this.index)
       },
       showProfile () {
         const modal = {
           userId: this.match.person._id,
           matchId: this.match._id
         }
-        this.$root.modalController.push(modal)
+        App.modalController.push(modal)
       },
       send () {
         var message = this.draft

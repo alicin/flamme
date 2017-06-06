@@ -3,7 +3,7 @@
     <p><v-btn @click.native="openFbWindow" class="white--text indigo darken-1 fb-login" >
       Login with Facebook
     </v-btn></p>
-    <p><v-switch label="Login as a different user" primary v-model="newUser" dark class="new-user" light /></p>
+    <p><v-switch label="Login as a different user" primary dark v-model="newUser" class="new-user" light /></p>
   </div>
 </template>
 

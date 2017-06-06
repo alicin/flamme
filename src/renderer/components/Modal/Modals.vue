@@ -40,7 +40,7 @@
       }
     },
     mounted () {
-      this.$root.modalController = this
+      App.modalController = this
     }
   }
 </script>

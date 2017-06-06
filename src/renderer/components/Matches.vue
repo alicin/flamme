@@ -1,22 +1,22 @@
 <template>
 <div>
-  <h6 class="pink--text">Going Out</h6>
-  <div class="go-container">
+  <h6 class="pink--text" v-if="goingout.length">Going Out</h6>
+  <div class="go-container" v-if="goingout.length">
     <ul class="outs cf" :style="{ width: widthGo + 'px' }">
-      <going-out v-for="out in goingout" v-if="out.match" :out="out"></going-out>
+      <going-out v-for="(out, index) in goingout" :key="index" v-if="out.match" :out="out"></going-out>
     </ul>
   </div>
 
-  <h6 class="pink--text">Matches <v-switch label="Unmatch Mode" v-model="unmatchMode" error dark hide-details /></h6>
+  <h6 class="pink--text">Matches <v-switch label="Unmatch Mode" v-model="unmatchMode" dark error hide-details /></h6>
   <div class="matches-container">
     <ul class="matches cf" :style="{ width: width + 'px' }">
-      <match v-for="(match, index) in matches" :index="index" :match="match"></match>
+      <match v-for="(match, index) in matches" :key="index" :index="index" :match="match"></match>
     </ul>
   </div>
 
   <h6 class="pink--text">Chats</h6>
   <ul class="chats">
-    <chat v-for="(chat, index) in chats" :index="index" :matched="chat"></chat>
+    <chat v-for="(chat, index) in chats" :key="index" :index="index" :matched="chat"></chat>
   </ul>
 </div>
   

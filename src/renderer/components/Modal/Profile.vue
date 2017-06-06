@@ -107,7 +107,7 @@
     },
     methods: {
       closeModal () {
-        this.$root.modalController.splice(this.index)
+        App.modalController.splice(this.index)
       },
       unmatch () {
         Api.unmatch(this['match-id'], (error, response) => {

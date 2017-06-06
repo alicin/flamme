@@ -42,7 +42,7 @@
         this.match.new = false
         this.match.newMessage = false
         Sync.unsetNew(this.match._id)
-        this.$root.modalController.push(modal)
+        App.modalController.push(modal)
       },
       unmatch () {
         this.$parent.unmatch(this.index, this.match._id, 'chat')

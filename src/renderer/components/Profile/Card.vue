@@ -1,11 +1,5 @@
 <template>
   <li :data-index="index" class="clickable" @click="showProfile">
-    <v-progress-circular 
-    indeterminate 
-    v-bind:size="70" 
-    v-bind:width="4" 
-    class="pink--text progress"
-    />
     <img v-if="imageUrl" class="main-photo" draggable="false" :src="imageUrl" alt="">
     <h6>{{ match.name }}, {{ age }}<br>
     <span class="subtitle">{{ match.teaser.string }}</span></h6>
@@ -34,7 +28,7 @@
           userId: this.match._id,
           matchId: this.match._id
         }
-        this.$root.modalController.push(modal)
+        App.modalController.push(modal)
       }
     },
     computed: {
@@ -51,8 +45,8 @@
 
 <style scoped>
 li {
-  left: 90px;
-  right: 90px;
+  left: 45px;
+  right: 45px;
   background: #fff;
   position: absolute;
   top: 30px;

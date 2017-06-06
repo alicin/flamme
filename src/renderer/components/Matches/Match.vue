@@ -31,7 +31,7 @@
         }
         Sync.unsetNew(this.match._id)
         this.match.new = false
-        this.$root.modalController.push(modal)
+        App.modalController.push(modal)
       },
       unmatch () {
         this.$parent.unmatch(this.index, this.match._id, 'match')
