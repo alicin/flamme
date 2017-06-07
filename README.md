@@ -11,7 +11,7 @@
 <p align="center">With analytical inspection of daily and hourly count of matches you get 🙃</p>
 <p align="center">Happy swiping!</p>
 <br>
-<p valign="top">
+<p align="center">
 <img src="https://raw.githubusercontent.com/alicin/flamme/master/screenshots/home.png" alt="Flamme" width="400"><img src="https://raw.githubusercontent.com/alicin/flamme/master/screenshots/matches.png" alt="Flamme" width="400"><img src="https://raw.githubusercontent.com/alicin/flamme/master/screenshots/analytics.png" alt="Flamme" width="400"><img src="https://raw.githubusercontent.com/alicin/flamme/master/screenshots/swipe.png" alt="Flamme" width="400">
 </p>
 
