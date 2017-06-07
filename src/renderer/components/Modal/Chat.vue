@@ -13,9 +13,7 @@
 
     <div class="content">
       <div v-for="message in match.messages" :class="{ message: true, sent: message.from == userId, received: message.from != userId }">
-        <div class="message-inner" v-if="message.message.indexOf('.giphy.com/media/') === -1">
-          {{ message.message }}
-        </div>
+        <div class="message-inner" v-if="message.message.indexOf('.giphy.com/media/') === -1">{{ message.message }}</div>
         <div class="message-inner gif" v-if="message.message.indexOf('.giphy.com/media/') > -1">
           <img :src="message.message">
         </div>
@@ -153,6 +151,7 @@
     border-radius: 4px;
     line-height: 1.2em;
     word-break: break-word;
+    white-space: pre-wrap;
   }
   .received {
     margin-right: 30%;
