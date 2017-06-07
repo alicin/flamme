@@ -7,9 +7,9 @@
   <br>
 </h1>
 
-<h4 align="center">An open source cross-platform Tinder desktop client built with <a href="http://electron.atom.io" target="_blank">Electron</a> and <a href="https://vuejs.org/" target="_blank">Vue.js</a> for educational purposes .</h4>
+<h4 align="center">An open source cross-platform Tinder desktop client built with <a href="http://electron.atom.io" target="_blank">Electron</a> and <a href="https://vuejs.org/" target="_blank">Vue.js</a> for <u style="text-decoration: underline">educational purposes</u>.</h4>
 <p align="center">With analytical inspection of daily and hourly count of matches you get 🙃</p>
-<p align="center">Happy swiping!</p>
+<p align="center">Happy swiping *cough* learning!</p>
 <br>
 <p align="center">
 <img src="https://raw.githubusercontent.com/alicin/flamme/master/screenshots/home.png" alt="Flamme" width="400"><img src="https://raw.githubusercontent.com/alicin/flamme/master/screenshots/matches.png" alt="Flamme" width="400"><img src="https://raw.githubusercontent.com/alicin/flamme/master/screenshots/analytics.png" alt="Flamme" width="400"><img src="https://raw.githubusercontent.com/alicin/flamme/master/screenshots/swipe.png" alt="Flamme" width="400">
