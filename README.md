@@ -16,6 +16,7 @@
 </p>
 
 #### Build Setup
+<p>Instructions below are tested with NodeJS v7.7.2 and works with yarn package manager as well.</p>
 
 ``` bash
 # install dependencies
@@ -58,7 +59,6 @@ This software mainly uses code from these open source packages.
 
 MIT
 
----
 ---
 
 > Twitter [@alican](https://twitter.com/alican)
