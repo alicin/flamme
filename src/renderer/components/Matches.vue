@@ -7,7 +7,7 @@
     </ul>
   </div>
 
-  <h6 class="pink--text">Matches <v-switch label="Unmatch Mode" v-model="unmatchMode" dark error hide-details /></h6>
+  <h6 class="pink--text">Matches <v-switch v-if="false" label="Unmatch Mode" v-model="unmatchMode" dark error hide-details /></h6>
   <div class="matches-container">
     <ul class="matches cf" :style="{ width: width + 'px' }">
       <match v-for="(match, index) in matches" :key="index" :index="index" :match="match"></match>
