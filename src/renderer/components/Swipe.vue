@@ -155,7 +155,7 @@
           this.recs = false
 
           if (response.results) {
-            this.cards = response.results.concat(this.cards)
+            this.cards = this.cards.concat(response.results)
           }
         })
       }
