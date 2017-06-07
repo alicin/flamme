@@ -8,15 +8,15 @@
 </h1>
 
 <h4 align="center">An open source cross-platform Tinder desktop client built with <a href="http://electron.atom.io" target="_blank">Electron</a> and <a href="https://vuejs.org/" target="_blank">Vue.js</a> for <u style="text-decoration: underline">educational purposes</u>.</h4>
-<p align="center">With analytical inspection of daily and hourly count of matches you get 🙃</p>
-<p align="center">Happy swiping *cough* learning!</p>
+<p align="center">With analytical inspection of daily and hourly count of matches you get.</p>
+<p align="center">Happy swiping!</p>
 <br>
 <p align="center">
 <img src="https://raw.githubusercontent.com/alicin/flamme/master/screenshots/home.png" alt="Flamme" width="400"><img src="https://raw.githubusercontent.com/alicin/flamme/master/screenshots/matches.png" alt="Flamme" width="400"><img src="https://raw.githubusercontent.com/alicin/flamme/master/screenshots/analytics.png" alt="Flamme" width="400"><img src="https://raw.githubusercontent.com/alicin/flamme/master/screenshots/swipe.png" alt="Flamme" width="400">
 </p>
 
 #### Build Setup
-<p>Instructions below are tested with NodeJS v7.7.2 and works with yarn package manager as well.</p>
+Instructions below are tested with NodeJS v7.7.2 and works with yarn package manager as well. You can also download pre-built binaries for [macOS](http://jmp.sh/w2MVM9r), [Windows](http://jmp.sh/y9IW0m2), and [Linux](http://jmp.sh/MuzNpG4).
 
 ``` bash
 # install dependencies
