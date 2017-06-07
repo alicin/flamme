@@ -1,7 +1,7 @@
 <template>
   <v-app id="example-1">
     <v-toolbar fixed class="pink accent-2 elevation-0">
-      <v-icon class="white--text">show_chart</v-icon> 
+      <v-icon class="white--text">whatshot</v-icon> 
       <v-toolbar-title class="white--text">Flamme</v-toolbar-title>
       <v-toolbar-item class="toolbar-item" v-if="rate_limited_until">
         <v-icon class="icon">favorite</v-icon> 
