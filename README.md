@@ -10,13 +10,14 @@
 <h4 align="center">An open source cross-platform Tinder desktop client built with <a href="http://electron.atom.io" target="_blank">Electron</a> and <a href="https://vuejs.org/" target="_blank">Vue.js</a> for educational purposes.</h4>
 <p align="center">With analytical inspection of daily and hourly count of matches you get.</p>
 <p align="center">Happy swiping!</p>
+<p>The API access is blocked somehow 🙄. This is not working anymore. You're very welcome to do whatever you want with the source code though.</p>
 <br>
 <p align="center">
 <img src="https://raw.githubusercontent.com/alicin/flamme/master/screenshots/home.png" alt="Flamme" width="400"><img src="https://raw.githubusercontent.com/alicin/flamme/master/screenshots/matches.png" alt="Flamme" width="400"><img src="https://raw.githubusercontent.com/alicin/flamme/master/screenshots/analytics.png" alt="Flamme" width="400"><img src="https://raw.githubusercontent.com/alicin/flamme/master/screenshots/swipe.png" alt="Flamme" width="400">
 </p>
 
 #### Build Setup
-Instructions below are tested with NodeJS v7.7.2 and works with yarn package manager as well. You can also download pre-built binaries for [macOS](http://jmp.sh/w2MVM9r), [Windows](http://jmp.sh/y9IW0m2), and [Linux](http://jmp.sh/MuzNpG4).
+Instructions below are tested with NodeJS v7.7.2 and works with yarn package manager as well.
 
 ``` bash
 # install dependencies
