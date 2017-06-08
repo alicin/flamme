@@ -1,10 +1,10 @@
 {
   "name": "flamme",
   "productName": "flamme",
-  "version": "0.0.0",
+  "version": "1.0.2",
   "author": "Ali Can Bardakci <alicanbardakci@gmail.com>",
-  "description": "An electron-vue project",
-  "license": null,
+  "description": "An open source tinder desktop client built with electron and Vue.js for educational purposes",
+  "license": "MIT",
   "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js",
