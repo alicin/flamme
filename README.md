@@ -7,7 +7,7 @@
   <br>
 </h1>
 
-<h4 align="center">An open source cross-platform Tinder desktop client built with <a href="http://electron.atom.io" target="_blank">Electron</a> and <a href="https://vuejs.org/" target="_blank">Vue.js</a> for <u style="text-decoration: underline">educational purposes</u>.</h4>
+<h4 align="center">An open source cross-platform Tinder desktop client built with <a href="http://electron.atom.io" target="_blank">Electron</a> and <a href="https://vuejs.org/" target="_blank">Vue.js</a> for educational purposes.</h4>
 <p align="center">With analytical inspection of daily and hourly count of matches you get.</p>
 <p align="center">Happy swiping!</p>
 <br>
@@ -34,6 +34,8 @@ npm run lint
 ```
 
 #### Road Map
+
+- [ ] Fixing the unevenly taken screenshots 🙃.
 - [ ] A profile settings screen to update photos and other profile information.
 - [ ] A map picker to fake the geolocation.
 - [ ] Making more sense of the "Analyze" tab. (Your ideas appreciated)
