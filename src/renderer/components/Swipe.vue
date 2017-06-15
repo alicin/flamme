@@ -124,12 +124,12 @@
         if (swipeInProgress || !this.$children[this.cards.length - 1]) return
         const child = this.$children[this.cards.length - 1]
         console.log(child.match)
-        if (child.imageIndex === child.match.photos.length - 1) {
+        if (child.imageIndex === child.match.user.photos.length - 1) {
           child.imageIndex = 0
         } else {
           child.imageIndex++
         }
-        child.imageUrl = child.match.photos[child.imageIndex].url
+        child.imageUrl = child.match.user.photos[child.imageIndex].url
       },
       getCards () {
         // TODO: superlike
