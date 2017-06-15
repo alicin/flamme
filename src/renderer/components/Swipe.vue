@@ -1,7 +1,7 @@
 <template>
   <div tabindex="-1" id="swiper" @keyup.left="pass" @keyup.right="like" @keyup.up="superLike" @keyup.down="nextImage">
     <ul class="card-stack">
-      <card v-for="(card, index) in cards" :key="index" :match="card" :index="index" :main="card.photos[0].url"></card>
+      <card v-for="(card, index) in cards" :key="index" :match="card.user" :index="index" :main="(card.user) ? card.user.photos[0].url : ''"></card>
     </ul>
     <div class="head" @click="getCards" v-if="!cards.length">
       <img :src="profilepic">
@@ -123,12 +123,12 @@
       nextImage () {
         if (swipeInProgress || !this.$children[this.cards.length - 1]) return
         const child = this.$children[this.cards.length - 1]
+        console.log(child.match)
         if (child.imageIndex === child.match.photos.length - 1) {
           child.imageIndex = 0
         } else {
           child.imageIndex++
         }
-
         child.imageUrl = child.match.photos[child.imageIndex].url
       },
       getCards () {
@@ -140,6 +140,7 @@
         this.recs = false
         console.log('fetching cards..')
         Api.getCards((error, response) => {
+          console.log(response)
           cardsInProgress = false
           if (error) {
             console.log(error)

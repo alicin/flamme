@@ -10,11 +10,8 @@ let callback
 var tinderLogin = function () {
   Api.authorize(function (error, response) {
     callback(error, response)
-    if (error) { return console.log(error) }
+    console.log('response')
     localStorage.tinderToken = Api.getAuthToken()
-    localStorage.name = response.user.full_name
-    localStorage.smallPhoto = response.user.photos[0].processedFiles[3].url
-    localStorage.userId = response.user._id
   })
 }
 

@@ -82,6 +82,7 @@
     },
     mounted () {
       this.match = this.matched
+      console.log(this.matched)
       this.scrollBottom()
       this.$el.querySelector('#text-box').focus()
       window.addEventListener('message', this.onNewMessage, false)

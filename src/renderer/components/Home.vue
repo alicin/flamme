@@ -51,6 +51,9 @@
           this.name = profile.user.name
           this.travel = profile.travel
           this.photos = profile.user.photos
+          localStorage.name = profile.user.full_name
+          localStorage.smallPhoto = profile.user.photos[0].processedFiles[3].url
+          localStorage.userId = profile.user._id
           App.profile = profile
           App.likes_remaining = profile.rating.likes_remaining
           App.super_likes_remaining = profile.rating.super_likes.remaining

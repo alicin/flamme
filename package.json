@@ -23,19 +23,20 @@
     "postinstall": "npm run lint:fix"
   },
   "dependencies": {
-    "vue": "^2.3.3",
     "axios": "^0.16.1",
-    "vue-electron": "^1.0.6",
-    "vue-router": "^2.5.3",
-    "vuex": "^2.3.1",
     "chart.js": "^2.5.0",
     "moment": "^2.18.1",
     "request": "^2.81.0",
-    "tinder": "^1.19.0",
+    "superagent": "^3.5.2",
     "underscore": "^1.8.3",
+    "unirest": "^0.5.1",
+    "vue": "^2.3.3",
     "vue-chartjs": "^2.6.3",
+    "vue-electron": "^1.0.6",
     "vue-resource": "^1.0.3",
-    "vuetify": "0.10.4"
+    "vue-router": "^2.5.3",
+    "vuetify": "0.10.4",
+    "vuex": "^2.3.1"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
