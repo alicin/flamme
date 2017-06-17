@@ -1,7 +1,7 @@
 <template>
   <div tabindex="-1" id="swiper" @keyup.left="pass" @keyup.right="like" @keyup.up="superLike" @keyup.down="nextImage">
     <ul class="card-stack">
-      <card v-for="(card, index) in cards" :key="index" :match="card.user" :index="index" :main="(card.user) ? card.user.photos[0].url : ''"></card>
+      <card v-for="(card, index) in cards" :key="index" :match="card.user" :index="index" :main="card.user.photos[0].url" v-if="card.user"></card>
     </ul>
     <div class="head" @click="getCards" v-if="!cards.length">
       <img :src="profilepic">
@@ -81,7 +81,7 @@
         setTimeout(() => {
           this.cards.splice(-1)
           swipeInProgress = false
-        }, 200)
+        }, 300)
       },
       superLike () {
         if (App.super_likes_remaining < 1) {
@@ -99,7 +99,6 @@
         child.$el.style.opacity = 0
         Api.superLike(child.match._id, (error, message) => {
           if (error) console.log(error)
-          console.log(message)
           if (message.likes_remaining === 0) {
             alert('No likes remaining.')
             return
@@ -123,7 +122,6 @@
       nextImage () {
         if (swipeInProgress || !this.$children[this.cards.length - 1]) return
         const child = this.$children[this.cards.length - 1]
-        console.log(child.match)
         if (child.imageIndex === child.match.photos.length - 1) {
           child.imageIndex = 0
         } else {
@@ -132,9 +130,6 @@
         child.imageUrl = child.match.photos[child.imageIndex].url
       },
       getCards () {
-        // TODO: superlike
-        // TODO: boost timer in top bar
-        // TODO: no recs check
         if (cardsInProgress) { return }
         cardsInProgress = true
         this.recs = false
@@ -146,8 +141,6 @@
             console.log(error)
             return
           }
-
-          console.log(response)
 
           if (response.message && response.message.indexOf('recs') > -1) {
             this.recs = true

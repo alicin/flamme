@@ -243,8 +243,8 @@ function TinderClient () {
 
     req.type('json')
     req.send({
-      'facebook_token': 'EAAGm0PX4ZCpsBABlJ5xn4edX5mMnJHLylHNbtq5vJhY5GbpjMCM8EhkcVIKufnbgS3dOEdTunZB1I8ZBgwadiGnHjJltb3B3BOTNlUi15bGuA3kI9BIzjkBl7kjq0KMZCDql46V1kgaXOiyIvmkRWsa2WTc8sv6lxoYSGaMkAClZBwSZB3XZBLpqYaoIAZAxtkmhsYmQ1W7DGX4lBgTT2rtqLB7lIwTT0GvoJuxtSoiBwgZDZD',
-      'facebook_id': '10152026682922548'
+      'facebook_token': fbToken,
+      'facebook_id': fbId
     })
 
     req.end(function (res) {
